@@ -18,7 +18,7 @@
 
 /********** Variable **********/
 
-static ADC_HandleTypeDef* hadc_ptr;
+extern ADC_HandleTypeDef hadc1;
 
 /********** Function Prototype **********/
 
@@ -33,11 +33,10 @@ void DrvLightInit(void)
 /*=== 周期関数 ===*/
 void DrvLightMain(void)
 {
-
-}
-
-/*=== ハンドラ設定関数 ===*/
-void DrvLightSetHandler(ADC_HandleTypeDef* hadc)
-{
-	hadc_ptr = hadc;
+volatile uint32_t ad_value;
+    
+    HAL_ADC_Start(&hadc1);
+    HAL_ADC_PollForConversion(&hadc1, 10);
+    ad_value = HAL_ADC_GetValue(&hadc1);
+    HAL_ADC_Stop(&hadc1);
 }

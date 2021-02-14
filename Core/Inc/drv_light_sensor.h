@@ -24,6 +24,5 @@
 
 void DrvLightInit(void);
 void DrvLightMain(void);
-void DrvLightSetHandler(ADC_HandleTypeDef* hadc);
 
 #endif /* INC_DRV_LIGHT_SENSOR_H_ */
